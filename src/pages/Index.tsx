@@ -8,6 +8,7 @@ const PHONE_DISPLAY = "+7 923 120-88-02";
 const TG_LINK = "https://t.me/Aeroport_car_wash";
 const MAX_LINK = "https://web.max.ru/-72453666829805";
 const YANDEX_NAV = "https://yandex.ru/maps?whatshere%5Bpoint%5D=82.62960209274826%2C55.00020125443566&whatshere%5Bzoom%5D=19.116194&ll=82.62960209274826%2C55.00012728091425&z=19.116194&si=2p3bfgjt29rdmy6ym2zju5vhy8";
+const DGIS_NAV = "https://2gis.ru/novosibirsk/geo/9429940000019919/82.629602,55.000201/route?routeType=car&to=82.629602,55.000201";
 
 // Brand colors
 const C = {
@@ -21,9 +22,9 @@ const C = {
   card: "#0f1a28",
   border: "#132030",
   border2: "#1a2d44",
-  text: "#e0e8f0",
-  muted: "#607a95",
-  dim: "#3a5270",
+  text: "#f0f6ff",
+  muted: "#8fb4d4",
+  dim: "#607a95",
 };
 
 const services = [
@@ -236,9 +237,9 @@ export default function Index() {
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 pt-24 pb-16">
           <div className="max-w-3xl">
-            <div className="flex items-center gap-3 mb-6 animate-fade-in" style={{ animationDelay: "0.1s", opacity: 0 }}>
+            <div className="flex items-center gap-3 mb-4 animate-fade-in" style={{ animationDelay: "0.1s", opacity: 0 }}>
               <div className="h-px w-12" style={{ backgroundColor: C.blue }} />
-              <span className="font-display text-sm tracking-[0.3em] uppercase" style={{ color: C.blue }}>
+              <span className="font-display font-bold tracking-[0.25em] uppercase" style={{ color: C.blue, fontSize: "clamp(1rem, 3vw, 1.35rem)" }}>
                 Грузовая автомойка
               </span>
             </div>
@@ -257,41 +258,41 @@ export default function Index() {
 
             <div className="flex flex-wrap gap-3 mb-10 animate-fade-in-up" style={{ animationDelay: "0.45s", opacity: 0 }}>
               {benefits.map((b) => (
-                <div key={b.text} className="flex items-center gap-2 px-4 py-2 rounded-sm border text-sm font-body" style={{ borderColor: C.blueBorder, color: C.blue, backgroundColor: C.blueDim }}>
+                <div key={b.text} className="flex items-center gap-2 px-3 py-2 rounded-sm border text-sm font-body" style={{ borderColor: C.blueBorder, color: "#7dd3f8", backgroundColor: C.blueDim }}>
                   <Icon name={b.icon as any} size={14} />
                   {b.text}
                 </div>
               ))}
             </div>
 
-            <div className="flex flex-wrap gap-4 animate-fade-in-up" style={{ animationDelay: "0.55s", opacity: 0 }}>
+            <div className="flex flex-col sm:flex-row flex-wrap gap-3 animate-fade-in-up" style={{ animationDelay: "0.55s", opacity: 0 }}>
               <a
                 href={YANDEX_NAV}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 px-6 py-4 rounded-sm font-display font-bold text-base tracking-wider uppercase transition-all hover:scale-105 hover:shadow-2xl"
+                className="flex items-center justify-center gap-3 px-5 py-4 rounded-sm font-display font-bold text-sm tracking-wider uppercase transition-all hover:scale-105 hover:shadow-2xl"
                 style={{ backgroundColor: C.blue, color: "#fff", boxShadow: `0 4px 32px ${C.blueGlow}` }}
               >
                 <Icon name="Navigation" size={18} />
-                Построить маршрут
+                Яндекс.Навигатор
+              </a>
+              <a
+                href={DGIS_NAV}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-3 px-5 py-4 rounded-sm font-display font-bold text-sm tracking-wider uppercase border-2 transition-all hover:scale-105"
+                style={{ borderColor: "#2ecc71", color: "#2ecc71", backgroundColor: "rgba(46,204,113,0.08)" }}
+              >
+                <Icon name="Navigation" size={18} />
+                2ГИС
               </a>
               <a
                 href={`tel:${PHONE}`}
-                className="flex items-center gap-3 px-6 py-4 rounded-sm font-display font-bold text-base tracking-wider uppercase border-2 transition-all hover:scale-105"
+                className="flex items-center justify-center gap-3 px-5 py-4 rounded-sm font-display font-bold text-sm tracking-wider uppercase border-2 transition-all hover:scale-105"
                 style={{ borderColor: C.blue, color: C.blue, backgroundColor: "transparent" }}
               >
                 <Icon name="Phone" size={18} />
                 Позвонить
-              </a>
-              <a
-                href={TG_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 px-6 py-4 rounded-sm font-display font-bold text-base tracking-wider uppercase border-2 transition-all hover:scale-105"
-                style={{ borderColor: C.border2, color: C.muted, backgroundColor: "transparent" }}
-              >
-                <Icon name="Send" size={18} />
-                Telegram
               </a>
             </div>
           </div>
@@ -391,7 +392,7 @@ export default function Index() {
             <h2 className="font-display font-bold text-3xl sm:text-4xl mb-4 uppercase" style={{ color: C.text }}>
               Цены на <span style={{ color: C.blue }}>услуги</span>
             </h2>
-            <p className="mb-10" style={{ color: C.dim }}>Прозрачные фиксированные цены. Без скрытых доплат.</p>
+            <p className="mb-10" style={{ color: C.muted }}>Прозрачные фиксированные цены. Без скрытых доплат.</p>
           </AnimSection>
 
           <AnimSection>
@@ -425,8 +426,8 @@ export default function Index() {
                 );
               })}
             </div>
-            <p className="mt-4 text-sm" style={{ color: C.dim }}>
-              * Цены для регулярной мойки. Индивидуальные условия для автопарков — уточняйте по телефону.
+            <p className="mt-4 text-sm" style={{ color: C.muted }}>
+              * Цены для разовой мойки. Индивидуальные условия для автопарков — уточняйте по телефону.
             </p>
           </AnimSection>
         </div>
@@ -555,7 +556,7 @@ export default function Index() {
                     <p className="font-display font-semibold text-sm tracking-wider uppercase mb-1" style={{ color: C.blue }}>Адрес</p>
                     <p style={{ color: C.text }}>Новосибирская область, г. Обь</p>
                     <p style={{ color: C.text }}>Омский тракт, 6А</p>
-                    <p className="text-sm mt-1" style={{ color: C.dim }}>Федеральная трасса Москва–Новосибирск, перед въездом в город</p>
+                    <p className="text-sm mt-1" style={{ color: C.muted }}>Федеральная трасса Москва–Новосибирск, перед въездом в город</p>
                   </div>
                 </div>
 
@@ -566,7 +567,7 @@ export default function Index() {
                   <div>
                     <p className="font-display font-semibold text-sm tracking-wider uppercase mb-1" style={{ color: C.blue }}>Телефон</p>
                     <a href={`tel:${PHONE}`} className="text-xl font-display font-bold hover:underline" style={{ color: C.text }}>{PHONE_DISPLAY}</a>
-                    <p className="text-sm mt-1" style={{ color: C.dim }}>Круглосуточно</p>
+                    <p className="text-sm mt-1" style={{ color: C.muted }}>Круглосуточно</p>
                   </div>
                 </div>
 
@@ -577,20 +578,32 @@ export default function Index() {
                   <div>
                     <p className="font-display font-semibold text-sm tracking-wider uppercase mb-1" style={{ color: C.blue }}>Email</p>
                     <a href="mailto:pavino2993860@gmail.com" className="hover:underline" style={{ color: C.text }}>pavino2993860@gmail.com</a>
-                    <p className="text-sm mt-1" style={{ color: C.dim }}>ИП Кутаков В.В.</p>
+                    <p className="text-sm mt-1" style={{ color: C.muted }}>ИП Кутаков В.В.</p>
                   </div>
                 </div>
 
-                <a
-                  href={YANDEX_NAV}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-3 w-full py-4 rounded-sm font-display font-bold text-base tracking-wider uppercase transition-all hover:scale-105"
-                  style={{ backgroundColor: C.blue, color: "#fff", boxShadow: `0 4px 24px ${C.blueGlow}` }}
-                >
-                  <Icon name="Navigation" size={18} />
-                  Построить маршрут в Яндекс.Навигаторе
-                </a>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <a
+                    href={YANDEX_NAV}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-3 flex-1 py-4 rounded-sm font-display font-bold text-sm tracking-wider uppercase transition-all hover:scale-105"
+                    style={{ backgroundColor: C.blue, color: "#fff", boxShadow: `0 4px 24px ${C.blueGlow}` }}
+                  >
+                    <Icon name="Navigation" size={18} />
+                    Яндекс.Навигатор
+                  </a>
+                  <a
+                    href={DGIS_NAV}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-3 flex-1 py-4 rounded-sm font-display font-bold text-sm tracking-wider uppercase border-2 transition-all hover:scale-105"
+                    style={{ borderColor: "#2ecc71", color: "#2ecc71", backgroundColor: "rgba(46,204,113,0.08)" }}
+                  >
+                    <Icon name="Navigation" size={18} />
+                    2ГИС
+                  </a>
+                </div>
               </div>
             </AnimSection>
 
