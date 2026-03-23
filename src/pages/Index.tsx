@@ -5,7 +5,7 @@ import Icon from "@/components/ui/icon";
 const HERO_IMAGE = "https://cdn.poehali.dev/projects/7c1e7851-0307-408d-b42d-60a0d54059d1/files/ca42b083-1d1c-4fb6-a4d4-7e3c5768f55a.jpg";
 const PHONE = "+79231208802";
 const PHONE_DISPLAY = "+7 923 120-88-02";
-const TG_LINK = "https://t.me/";
+const TG_LINK = "https://t.me/Aeroport_car_wash";
 const YANDEX_NAV = "https://yandex.ru/maps?whatshere%5Bpoint%5D=82.62960209274826%2C55.00020125443566&whatshere%5Bzoom%5D=19.116194&ll=82.62960209274826%2C55.00012728091425&z=19.116194&si=2p3bfgjt29rdmy6ym2zju5vhy8";
 
 // Brand colors
