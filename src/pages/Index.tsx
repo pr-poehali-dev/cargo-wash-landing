@@ -32,18 +32,29 @@ const services = [
   { icon: "PackageOpen", label: "Мойка внутри полуприцепа" },
   { icon: "ShieldCheck", label: "Дезинфекция транспорта" },
   { icon: "Zap", label: "Экспресс-мойка" },
+  { icon: "Tractor", label: "Мойка тракторов и сельхозтехники" },
+  { icon: "HardHat", label: "Мойка строительной техники" },
+  { icon: "Fuel", label: "Мойка бензовозов и цистерн" },
+  { icon: "Forklift", label: "Мойка погрузчиков" },
+  { icon: "Drill", label: "Мойка дорожной техники" },
+  { icon: "Bus", label: "Мойка спецавтомобилей и автобусов" },
 ];
 
 const prices = [
-  { label: "Тандем", price: "2 400 ₽" },
-  { label: "Тягач + п/п до 90 м³", price: "2 200 ₽" },
-  { label: "Тягач + п/п до 110 м³", price: "2 400 ₽" },
-  { label: "Грузовик 10 т", price: "1 500 ₽" },
-  { label: "Грузовик 5 т", price: "1 000 ₽" },
-  { label: "Газель", price: "750 ₽" },
-  { label: "Самосвал", price: "от 1 350 ₽" },
-  { label: "Мойка внутри полуприцепа", price: "1 350 ₽" },
-  { label: "Дезинфекция внутри полуприцепа", price: "1 200 ₽" },
+  { label: "Тандем", price: "2 400 ₽", group: false },
+  { label: "Тягач + п/п до 90 м³", price: "2 200 ₽", group: false },
+  { label: "Тягач + п/п до 110 м³", price: "2 400 ₽", group: false },
+  { label: "Грузовик 10 т", price: "1 500 ₽", group: false },
+  { label: "Грузовик 5 т", price: "1 000 ₽", group: false },
+  { label: "Газель", price: "750 ₽", group: false },
+  { label: "Самосвал", price: "от 1 350 ₽", group: false },
+  { label: "Мойка внутри полуприцепа", price: "1 350 ₽", group: false },
+  { label: "Дезинфекция внутри полуприцепа", price: "1 200 ₽", group: false },
+  { label: "Трактор / комбайн", price: "от 1 500 ₽", group: true },
+  { label: "Экскаватор / бульдозер", price: "от 2 000 ₽", group: true },
+  { label: "Бензовоз / цистерна", price: "от 2 200 ₽", group: true },
+  { label: "Автобус", price: "от 1 200 ₽", group: true },
+  { label: "Спецтехника (по запросу)", price: "договорная", group: true },
 ];
 
 const benefits = [
@@ -79,6 +90,71 @@ function AnimSection({ children, className = "" }: { children: React.ReactNode; 
   );
 }
 
+function FloatingButtons() {
+  const [visible, setVisible] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setVisible(window.scrollY > 300);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <div
+      className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3 transition-all duration-500"
+      style={{ opacity: visible ? 1 : 0, pointerEvents: visible ? "auto" : "none", transform: visible ? "translateY(0)" : "translateY(20px)" }}
+    >
+      {/* Expanded actions */}
+      <div className={`flex flex-col items-end gap-2 transition-all duration-300 ${expanded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"}`}>
+        <a
+          href={`tel:${PHONE}`}
+          className="flex items-center gap-3 px-4 py-3 rounded-xl font-display font-bold text-sm tracking-wider uppercase transition-all hover:scale-105 whitespace-nowrap"
+          style={{ backgroundColor: C.blue, color: "#fff", boxShadow: `0 4px 24px ${C.blueGlow}` }}
+        >
+          <Icon name="Phone" size={16} />
+          {PHONE_DISPLAY}
+        </a>
+        <a
+          href={YANDEX_NAV}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-3 px-4 py-3 rounded-xl font-display font-bold text-sm tracking-wider uppercase transition-all hover:scale-105 whitespace-nowrap"
+          style={{ backgroundColor: C.card, color: C.blue, border: `1px solid ${C.blueBorder}`, boxShadow: "0 4px 20px rgba(0,0,0,0.5)" }}
+        >
+          <Icon name="Navigation" size={16} />
+          Маршрут
+        </a>
+        <a
+          href={TG_LINK}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-3 px-4 py-3 rounded-xl font-display font-bold text-sm tracking-wider uppercase transition-all hover:scale-105 whitespace-nowrap"
+          style={{ backgroundColor: C.card, color: "#7fb8d8", border: `1px solid ${C.border2}`, boxShadow: "0 4px 20px rgba(0,0,0,0.5)" }}
+        >
+          <Icon name="Send" size={16} />
+          Telegram
+        </a>
+      </div>
+
+      {/* Toggle button */}
+      <button
+        onClick={() => setExpanded(!expanded)}
+        className="w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95"
+        style={{
+          backgroundColor: expanded ? C.card : C.blue,
+          color: expanded ? C.blue : "#fff",
+          border: expanded ? `2px solid ${C.blueBorder}` : "none",
+          boxShadow: expanded ? "0 4px 20px rgba(0,0,0,0.5)" : `0 4px 28px ${C.blueGlow}`,
+          transform: expanded ? "rotate(45deg)" : "rotate(0deg)",
+        }}
+      >
+        <Icon name={expanded ? "X" : "Phone"} size={22} />
+      </button>
+    </div>
+  );
+}
+
 export default function Index() {
   const [navScrolled, setNavScrolled] = useState(false);
 
@@ -90,6 +166,8 @@ export default function Index() {
 
   return (
     <div className="min-h-screen font-body" style={{ backgroundColor: C.bg, color: C.text }}>
+
+      <FloatingButtons />
 
       {/* NAV */}
       <nav
@@ -302,19 +380,30 @@ export default function Index() {
                 <span>Услуга</span>
                 <span className="text-right">Стоимость</span>
               </div>
-              {prices.map((p, i) => (
-                <div
-                  key={p.label}
-                  className="grid grid-cols-2 px-6 py-4 items-center border-b transition-all"
-                  style={{
-                    borderColor: C.border,
-                    backgroundColor: i % 2 === 0 ? C.bg3 : C.card,
-                  }}
-                >
-                  <span className="font-body text-sm" style={{ color: C.muted }}>{p.label}</span>
-                  <span className="font-display font-bold text-right" style={{ color: C.blue }}>{p.price}</span>
-                </div>
-              ))}
+              {prices.map((p, i) => {
+                const prevGroup = i > 0 ? prices[i - 1].group : p.group;
+                const showDivider = p.group && !prevGroup;
+                return (
+                  <>
+                    {showDivider && (
+                      <div key="divider-spec" className="px-6 py-2 font-display text-xs tracking-widest uppercase" style={{ backgroundColor: "rgba(14,165,233,0.08)", color: C.blue, borderBottom: `1px solid ${C.border}` }}>
+                        Спецтехника
+                      </div>
+                    )}
+                    <div
+                      key={p.label}
+                      className="grid grid-cols-2 px-6 py-4 items-center border-b transition-all"
+                      style={{
+                        borderColor: C.border,
+                        backgroundColor: i % 2 === 0 ? C.bg3 : C.card,
+                      }}
+                    >
+                      <span className="font-body text-sm" style={{ color: C.muted }}>{p.label}</span>
+                      <span className="font-display font-bold text-right" style={{ color: C.blue }}>{p.price}</span>
+                    </div>
+                  </>
+                );
+              })}
             </div>
             <p className="mt-4 text-sm" style={{ color: C.dim }}>
               * Цены для регулярной мойки. Индивидуальные условия для автопарков — уточняйте по телефону.
