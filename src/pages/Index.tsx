@@ -8,7 +8,7 @@ const PHONE_DISPLAY = "+7 923 120-88-02";
 const TG_LINK = "https://t.me/Aeroport_car_wash";
 const MAX_LINK = "https://web.max.ru/-72453666829805";
 const YANDEX_NAV = "https://yandex.ru/maps?whatshere%5Bpoint%5D=82.62960209274826%2C55.00020125443566&whatshere%5Bzoom%5D=19.116194&ll=82.62960209274826%2C55.00012728091425&z=19.116194&si=2p3bfgjt29rdmy6ym2zju5vhy8";
-const DGIS_NAV = "https://2gis.ru/novosibirsk/geo/9429940000019919/82.629602,55.000201/route?routeType=car&to=82.629602,55.000201";
+const DGIS_NAV = "https://go.2gis.com/sWM3f";
 
 // Brand colors
 const C = {
