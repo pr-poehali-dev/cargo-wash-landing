@@ -13,7 +13,7 @@
     --popover: 0 0% 10%;
     --popover-foreground: 0 0% 95%;
 
-    --primary: 47 95% 53%;
+    --primary: 199 89% 48%;
     --primary-foreground: 0 0% 4%;
 
     --secondary: 0 0% 15%;
@@ -22,7 +22,7 @@
     --muted: 0 0% 15%;
     --muted-foreground: 0 0% 60%;
 
-    --accent: 47 95% 53%;
+    --accent: 199 89% 48%;
     --accent-foreground: 0 0% 4%;
 
     --destructive: 0 84.2% 60.2%;
@@ -30,22 +30,24 @@
 
     --border: 0 0% 18%;
     --input: 0 0% 18%;
-    --ring: 47 95% 53%;
+    --ring: 199 89% 48%;
 
     --radius: 0.25rem;
 
     --sidebar-background: 0 0% 8%;
     --sidebar-foreground: 0 0% 90%;
-    --sidebar-primary: 47 95% 53%;
+    --sidebar-primary: 199 89% 48%;
     --sidebar-primary-foreground: 0 0% 4%;
     --sidebar-accent: 0 0% 15%;
     --sidebar-accent-foreground: 0 0% 90%;
     --sidebar-border: 0 0% 18%;
-    --sidebar-ring: 47 95% 53%;
+    --sidebar-ring: 199 89% 48%;
 
-    --yellow: #f5c518;
-    --dark: #0a0a0a;
-    --steel: #1a1a1a;
+    --brand: #0ea5e9;
+    --brand-dim: rgba(14, 165, 233, 0.12);
+    --brand-glow: rgba(14, 165, 233, 0.35);
+    --dark: #080c12;
+    --steel: #0f1822;
   }
 }
 
@@ -56,20 +58,20 @@
 
   body {
     @apply bg-background text-foreground font-body;
-    background-color: #0a0a0a;
+    background-color: #080c12;
     color: #e0e0e0;
   }
 }
 
 @layer utilities {
-  .text-yellow {
-    color: #f5c518;
+  .text-brand {
+    color: #0ea5e9;
   }
-  .bg-yellow {
-    background-color: #f5c518;
+  .bg-brand {
+    background-color: #0ea5e9;
   }
-  .border-yellow {
-    border-color: #f5c518;
+  .border-brand {
+    border-color: #0ea5e9;
   }
 
   .stripe-bg {
@@ -77,8 +79,8 @@
       -45deg,
       transparent,
       transparent 8px,
-      rgba(245, 197, 24, 0.06) 8px,
-      rgba(245, 197, 24, 0.06) 16px
+      rgba(14, 165, 233, 0.04) 8px,
+      rgba(14, 165, 233, 0.04) 16px
     );
   }
 
@@ -91,13 +93,13 @@
     z-index: 0;
   }
 
-  .glow-yellow {
+  .glow-blue {
     box-shadow:
-      0 0 30px rgba(245, 197, 24, 0.25),
-      0 0 60px rgba(245, 197, 24, 0.1);
+      0 0 30px rgba(14, 165, 233, 0.3),
+      0 0 60px rgba(14, 165, 233, 0.12);
   }
 
   .text-glow {
-    text-shadow: 0 0 40px rgba(245, 197, 24, 0.5);
+    text-shadow: 0 0 40px rgba(14, 165, 233, 0.6);
   }
 }

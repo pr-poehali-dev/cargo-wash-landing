@@ -68,10 +68,13 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				brand: {
-					yellow: '#F5C518',
-					dark: '#0A0A0A',
-					gray: '#1A1A1A',
-					steel: '#2A2A2A',
+					blue: '#0ea5e9',
+					'blue-dim': 'rgba(14,165,233,0.12)',
+					'blue-glow': 'rgba(14,165,233,0.35)',
+					dark: '#080c12',
+					navy: '#0d1826',
+					steel: '#0f1822',
+					border: '#132030',
 					light: '#E0E0E0',
 				}
 			},
@@ -101,9 +104,9 @@ export default {
 					'0%': { opacity: '0', transform: 'translateX(-40px)' },
 					'100%': { opacity: '1', transform: 'translateX(0)' }
 				},
-				'pulse-yellow': {
-					'0%, 100%': { boxShadow: '0 0 0 0 rgba(245, 197, 24, 0.4)' },
-					'50%': { boxShadow: '0 0 0 12px rgba(245, 197, 24, 0)' }
+				'pulse-blue': {
+					'0%, 100%': { boxShadow: '0 0 0 0 rgba(14, 165, 233, 0.4)' },
+					'50%': { boxShadow: '0 0 0 12px rgba(14, 165, 233, 0)' }
 				},
 				'scan': {
 					'0%': { transform: 'translateY(-100%)' },
@@ -116,7 +119,7 @@ export default {
 				'fade-in-up': 'fade-in-up 0.7s ease-out forwards',
 				'fade-in': 'fade-in 0.6s ease-out forwards',
 				'slide-in-left': 'slide-in-left 0.6s ease-out forwards',
-				'pulse-yellow': 'pulse-yellow 2s infinite',
+				'pulse-blue': 'pulse-blue 2s infinite',
 				'scan': 'scan 3s linear infinite',
 			}
 		}
