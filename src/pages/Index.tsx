@@ -6,6 +6,7 @@ const HERO_IMAGE = "https://cdn.poehali.dev/projects/7c1e7851-0307-408d-b42d-60a
 const PHONE = "+79231208802";
 const PHONE_DISPLAY = "+7 923 120-88-02";
 const TG_LINK = "https://t.me/Aeroport_car_wash";
+const MAX_LINK = "https://max.ru/Aeroport_car_wash";
 const YANDEX_NAV = "https://yandex.ru/maps?whatshere%5Bpoint%5D=82.62960209274826%2C55.00020125443566&whatshere%5Bzoom%5D=19.116194&ll=82.62960209274826%2C55.00012728091425&z=19.116194&si=2p3bfgjt29rdmy6ym2zju5vhy8";
 
 // Brand colors
@@ -187,17 +188,36 @@ export default function Index() {
               Аэропорт
             </span>
           </div>
-          <a
-            href={`tel:${PHONE}`}
-            className="hidden sm:flex items-center gap-2 px-4 py-2 rounded font-display font-semibold text-sm tracking-wider uppercase transition-all hover:scale-105"
-            style={{ backgroundColor: C.blue, color: "#fff" }}
-          >
-            <Icon name="Phone" size={14} />
-            {PHONE_DISPLAY}
-          </a>
-          <a href={`tel:${PHONE}`} className="sm:hidden" style={{ color: C.blue }}>
-            <Icon name="Phone" size={20} />
-          </a>
+          <div className="flex items-center gap-2">
+            <a
+              href={`tel:${PHONE}`}
+              className="flex items-center gap-2 px-3 py-2 rounded font-display font-semibold text-sm tracking-wider uppercase transition-all hover:scale-105"
+              style={{ backgroundColor: C.blue, color: "#fff" }}
+            >
+              <Icon name="Phone" size={14} />
+              <span className="hidden sm:inline">{PHONE_DISPLAY}</span>
+            </a>
+            <a
+              href={TG_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-3 py-2 rounded font-display font-semibold text-sm tracking-wider uppercase transition-all hover:scale-105"
+              style={{ backgroundColor: C.card, color: "#7fb8d8", border: `1px solid ${C.border2}` }}
+            >
+              <Icon name="Send" size={14} />
+              <span className="hidden md:inline">TG</span>
+            </a>
+            <a
+              href={MAX_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-3 py-2 rounded font-display font-semibold text-sm tracking-wider uppercase transition-all hover:scale-105"
+              style={{ backgroundColor: C.card, color: "#a78bfa", border: `1px solid rgba(167,139,250,0.3)` }}
+            >
+              <Icon name="MessageCircle" size={14} />
+              <span className="hidden md:inline">Max</span>
+            </a>
+          </div>
         </div>
       </nav>
 
